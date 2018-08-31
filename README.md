@@ -1,7 +1,9 @@
 # Just a simple React.js calculator App with Material UI
-
 ## How to use
+git clone https://github.com/Fredricktgl/calculator-app.git
+
 npm install
+
 npm run start
 
 ## Note
