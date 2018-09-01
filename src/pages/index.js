@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
-import Button from '@material-ui/core/Button';
+import Calbuttons from '../pages/calbuttons'
+import Calkeypress from '../pages/calkeypress'
 
 const styles = theme => ({
   root: {
@@ -129,45 +129,8 @@ class Index extends React.Component {
         <Typography variant="headline" gutterBottom>
           {calculation.length === 0 ? 0 : calculation}
         </Typography>
-        <KeyboardEventHandler 
-          handleKeys={['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.',
-                        '+',  'shift + =', '-', 
-                        'x', 'shift + X',  'shift + 8', '*',
-                        '/', '=', 'enter', 'c', 'shift + c', 'backspace', 'shift + 9', 'shift + 0', '(', ')']} 
-          onKeyEvent={ (key) => keyPress(key) }/>
-
-         <div>
-          <Button variant="contained" color="secondary" onClick={() => operatorSubmit('C')} >C</Button>
-          <Button variant="contained" color="secondary" onClick={() => operatorSubmit('Del')} >Del</Button>
-          <Button variant="contained" color="secondary" onClick={() => operatorSubmit('()')} >( )</Button>
-          <Button variant="contained" color="secondary" onClick={() => operatorSubmit('+')} >+</Button>
-          <br />
-
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(1)} >1</Button>
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(2)} >2</Button>
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(3)} >3</Button>
-          <Button variant="contained" color="secondary" onClick={() => operatorSubmit('-')} >-</Button>
-          <br />
-
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(4)} >4</Button>
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(5)} >5</Button>
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(6)} >6</Button>
-          <Button variant="contained" color="secondary" onClick={() => operatorSubmit('*')} >X</Button>
-          <br />
-
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(7)} >7</Button>
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(8)} >8</Button>
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(9)} >9</Button>
-          <Button variant="contained" color="secondary" onClick={() => operatorSubmit('/')} >/</Button>
-          <br />
-
-          <Button variant="contained" color="primary" onClick={() => numberSubmit('.')} >.</Button>
-          <Button variant="contained" color="primary" onClick={() => numberSubmit(0)} >0</Button>
-          <Button variant="contained" color="primary" onClick={() => operatorSubmit('-/+')} >-/+</Button>
-          <Button variant="contained" color="secondary" onClick={() => operatorSubmit('=')} >=</Button>
-          <br />
-        </div>
-
+          <Calkeypress keyPress={keyPress} />
+          <Calbuttons numberSubmit={numberSubmit} operatorSubmit={operatorSubmit} />
         <br />
 
         <Typography gutterBottom>
