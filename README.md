@@ -1,21 +1,10 @@
-# Create React App example
-
+# Just a simple React.js calculator App with Material UI
 ## How to use
+git clone https://github.com/Fredricktgl/calculator-app.git
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
-
-```bash
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app
-cd create-react-app
-```
-
-Install it and run:
-
-```bash
 npm install
+
 npm run start
-```
 
-## The idea behind the example
-
-[Create React App](https://github.com/facebookincubator/create-react-app) with no build configuration.
+## Note
+You can also use your keyboard to enter the numbers and arithmetic functions.  
