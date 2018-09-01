@@ -50,6 +50,7 @@ class Index extends React.Component {
     }
 
     const numberSubmit = (e) => {
+      const setNumberState = () => this.setState(prevState => ({ calculation: [...prevState.calculation, e] }));
       if (e === '.') {
         let lastNumPos
         
@@ -76,16 +77,17 @@ class Index extends React.Component {
                 this.setState(prevState => ({ calculation: [...prevState.calculation, e] })) : 
                 this.setState(prevState => ({ calculation: [...prevState.calculation, 0, e] }));
             } else {
-              this.setState(prevState => ({ calculation: [...prevState.calculation, e] }));
+              setNumberState()
             }
         }
       } else {
-        this.setState(prevState => ({ calculation: [...prevState.calculation, e] }));
+        setNumberState()
       }
     }
 
     const operatorSubmit = (o) => {
       let lastElement = calculation[elementPos-1]
+      const setOperatorState = () => this.setState(prevState => ({ calculation: [...prevState.calculation, o] }));
 
       if (o === 'C') {
         this.setState({ calculation: [] });
@@ -98,21 +100,21 @@ class Index extends React.Component {
           this.setState(prevState => ({ calculation: ['-(', ...prevState.calculation, ')'] }));
         }
       } else if (o === '+' && lastElement !== '+') {
-        this.setState(prevState => ({ calculation: [...prevState.calculation, o] }));
+        setOperatorState()
       } else if (o === '-' && lastElement !== '-') {
-        this.setState(prevState => ({ calculation: [...prevState.calculation, o] }));
+        setOperatorState()
       } else if (o === '/' && lastElement !== '/') {
-        this.setState(prevState => ({ calculation: [...prevState.calculation, o] }));
+        setOperatorState()
       } else if (o === '*' && lastElement !== '*') {
-        this.setState(prevState => ({ calculation: [...prevState.calculation, o] }));
+        setOperatorState()
       } else if (o === 'Del') {
         this.setState({ calculation: calculation.slice(0, -1) })
       } else if (o === '()') {
         if (bracket === "(") {
-          this.setState(prevState => ({ calculation: [...prevState.calculation, "("] }));
+          setOperatorState()
           this.setState({ bracket: ")"})
         } else {
-          this.setState(prevState => ({ calculation: [...prevState.calculation, ")"] }));
+          setOperatorState()
           this.setState({ bracket: "("})
         }
       }
