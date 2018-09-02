@@ -111,10 +111,10 @@ class Index extends React.Component {
         this.setState({ calculation: calculation.slice(0, -1) })
       } else if (o === '()') {
         if (bracket === "(") {
-          setOperatorState()
+          this.setState(prevState => ({ calculation: [...prevState.calculation, bracket] }));
           this.setState({ bracket: ")"})
         } else {
-          setOperatorState()
+          this.setState(prevState => ({ calculation: [...prevState.calculation, bracket] }));
           this.setState({ bracket: "("})
         }
       }
